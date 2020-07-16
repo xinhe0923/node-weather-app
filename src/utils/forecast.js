@@ -8,6 +8,7 @@ request({ url, json: true }, (error, {body}) => {
   const weather=body.current.weather_descriptions[0]
   const temperature=body.current.temperature
   const feelslike=body.current.feelslike
+  const humidity=body.current.humidity
   if (error) {
     callback("unable to connect to weather service",undefined);
   } 
@@ -16,9 +17,9 @@ callback('unable to find location',undefined)
   }
   else {
     callback
-    (undefined, "The weather is "+ weather+". It is"+ 
+    (undefined, "The weather is "+ weather+". It is currently"+ 
       temperature+" degress out, but it feels like "+
-      feelslike
+      feelslike+" degrees out. The humidity is "+humidity+"."
       )
     
   }
